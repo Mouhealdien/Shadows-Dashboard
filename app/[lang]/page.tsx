@@ -1,7 +1,7 @@
+import Link from "next/link";
 import { getDictionary } from "../../get-dictionary";
 import { Locale } from "../../i18n-config";
 import Counter from "./components/counter";
-import LocaleSwitcher from "./components/locale-switcher";
 
 export default async function IndexPage({
   params: { lang },
@@ -12,14 +12,16 @@ export default async function IndexPage({
 
   return (
     <div>
-      <LocaleSwitcher />
       <div>
         <p>Current locale: {lang}</p>
-        <p>
-          This text is rendered on the server:{" "}
-          {dictionary["server-component"].welcome}
-        </p>
-        <Counter dictionary={dictionary.counter} />
+        <p>This text is rendered on the server: {dictionary["welcome"]}</p>
+        <Counter dictionary={dictionary} />
+        <Link style={{ padding: 20 }} href={`/${lang}/about-us`} locale={lang}>
+          Move to About US
+        </Link>
+        <Link href={`/${lang}/testpage`} locale={lang}>
+          Move to test
+        </Link>
       </div>
     </div>
   );
