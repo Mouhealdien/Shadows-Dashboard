@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { getDictionary } from "../../get-dictionary";
 import { Locale } from "../../i18n-config";
-import Counter from "./components/counter";
+
+import LoginForm from "./components/Login/LoginForm";
 
 export default async function IndexPage({
   params: { lang },
@@ -10,5 +11,9 @@ export default async function IndexPage({
 }) {
   const dictionary = await getDictionary(lang);
 
-  return <div>hello</div>;
+  return (
+    <div>
+      <LoginForm dictionary={dictionary} />
+    </div>
+  );
 }

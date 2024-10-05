@@ -1,7 +1,6 @@
 {
-  "welcome": "Vítejte",
-  "aboutPage": "نؤحسشسيشس",
-  "test": "وووووووو",
-  "increment": "Přidat",
-  "decrement": "Ubrat"
+  "loginTitle": "تسجيل الدخول إلى حسابك",
+  "email": "البريد الالكتروني",
+  "password": "كلمة المرور",
+  "signIn": "تسجيل الدخول"
 }
