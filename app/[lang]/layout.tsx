@@ -1,6 +1,7 @@
 import { i18n, type Locale } from "../../i18n-config";
-import LocaleSwitcher from "./components/locale-switcher";
-
+import "./global.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
@@ -16,6 +17,7 @@ export default function Root({
     <html lang={params.lang} dir={params.lang == "ar" ? "rtl" : "ltr"}>
       <body>
         {/* <LocaleSwitcher /> */}
+        <ToastContainer />
         {children}
       </body>
     </html>
@@ -23,6 +25,6 @@ export default function Root({
 }
 
 export const metadata = {
-  title: "Shadwos Dashboard",
+  title: "Shadows Dashboard",
   description: "Welcome To Shadows Center Dashboard",
 };

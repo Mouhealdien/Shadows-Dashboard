@@ -10,19 +10,5 @@ export default async function IndexPage({
 }) {
   const dictionary = await getDictionary(lang);
 
-  return (
-    <div>
-      <div>
-        <p>Current locale: {lang}</p>
-        <p>This text is rendered on the server: {dictionary["welcome"]}</p>
-        <Counter dictionary={dictionary} />
-        <Link style={{ padding: 20 }} href={`/${lang}/about-us`} locale={lang}>
-          Move to About US
-        </Link>
-        <Link href={`/${lang}/testpage`} locale={lang}>
-          Move to test
-        </Link>
-      </div>
-    </div>
-  );
+  return <div>hello</div>;
 }
