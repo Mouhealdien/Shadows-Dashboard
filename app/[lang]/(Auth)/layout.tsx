@@ -1,5 +1,6 @@
-import { i18n, type Locale } from "../../i18n-config";
-import "./global.css";
+import { i18n, type Locale } from "../../../i18n-config";
+import SideBar from "../components/global/SideBar";
+import "../global.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export async function generateStaticParams() {
@@ -17,6 +18,7 @@ export default function Root({
     <html lang={params.lang} dir={params.lang == "ar" ? "rtl" : "ltr"}>
       <body>
         {/* <LocaleSwitcher /> */}
+        {/* <SideBar /> */}
         <ToastContainer />
         {children}
       </body>

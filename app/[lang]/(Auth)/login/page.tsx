@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { getDictionary } from "../../get-dictionary";
-import { Locale } from "../../i18n-config";
+import { getDictionary } from "../../../../get-dictionary";
+import { Locale } from "../../../../i18n-config";
 
-import LoginForm from "./components/Login/LoginForm";
+import LoginForm from "../../components/Login/LoginForm";
 
-export default async function IndexPage({
+export default async function page({
   params: { lang },
 }: {
   params: { lang: Locale };
