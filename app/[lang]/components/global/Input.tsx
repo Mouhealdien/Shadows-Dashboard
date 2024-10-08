@@ -3,17 +3,22 @@ import React from "react";
 type propsType = {
   inputProps: React.HTMLProps<HTMLInputElement>;
   label?: string;
+  labelStyle?: string;
 };
 
-const Input = ({ inputProps, label }: propsType) => {
+const Input = ({ inputProps, label, labelStyle }: propsType) => {
   return (
-    <div>
-      <label className="block mb-2 text-sm font-medium text-secondary ">
+    <div className="w-full">
+      <label
+        className={`block mb-2 text-sm font-medium ${
+          labelStyle ? labelStyle : "text-secondary"
+        }  `}
+      >
         {label}
       </label>
       <input
         {...inputProps}
-        className="bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-400  "
+        className="bg-gray-50 border   border-gray-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-400  "
       />
     </div>
   );

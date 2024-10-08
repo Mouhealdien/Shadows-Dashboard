@@ -22,7 +22,7 @@ export default async function Root({
         {/* <LocaleSwitcher /> */}
         <SideBar dictionary={dictionary} />
         <ToastContainer />
-        <div className="p-4 text-fourth  sm:mr-64">{children}</div>
+        <div className="p-4   sm:mr-64">{children}</div>
       </body>
     </html>
   );

@@ -8,9 +8,16 @@ const Modal = dynamic(() => import("./Modal"), {
 type propsType = {
   modalContent: ReactNode;
   icon: ReactNode;
+  customeStyle?: string;
+  ModalTitle?: string;
 };
 
-const ModalButton = ({ modalContent, icon }: propsType) => {
+const ModalButton = ({
+  modalContent,
+  icon,
+  customeStyle,
+  ModalTitle,
+}: propsType) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleModal = () => {
@@ -19,8 +26,12 @@ const ModalButton = ({ modalContent, icon }: propsType) => {
 
   return (
     <div>
-      <IconButton onClick={toggleModal} icon={icon} />
-      <Modal isOpen={isOpen} onClose={toggleModal}>
+      <IconButton
+        customeStyle={customeStyle}
+        onClick={toggleModal}
+        icon={icon}
+      />
+      <Modal ModalTitle={ModalTitle} isOpen={isOpen} onClose={toggleModal}>
         <div>{modalContent}</div>
       </Modal>
     </div>

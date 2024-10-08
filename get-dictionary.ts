@@ -10,4 +10,4 @@ const dictionaries = {
 };
 
 export const getDictionary = async (locale: Locale) =>
-  dictionaries[locale]?.() ?? dictionaries.ar();
+  (dictionaries as any)[locale]?.() ?? dictionaries.ar();

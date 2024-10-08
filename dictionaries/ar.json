@@ -8,5 +8,12 @@
   "employees": "الموظفون",
   "courses": "الدورات",
   "accounts": "الحسابات",
-  "actions": "الإجرائات"
+  "actions": "الإجرائات",
+  "add": "إضافة",
+  "role": "النوع",
+  "admin": "مسؤول",
+  "employee": "موظف",
+  "thisIsRequired": "هذا الحقل مطلوب",
+  "AddAccount": "اضافة حساب",
+  "editAccount": "تعديل الحساب"
 }
