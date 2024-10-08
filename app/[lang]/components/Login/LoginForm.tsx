@@ -3,8 +3,12 @@ import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import Input from "../global/Input";
 import { type getDictionary } from "../../../../get-dictionary";
+import { useLoginMutation } from "../../../../redux/services/Api";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 type FormInput = {
-  email: string;
+  username: string;
   password: string;
 };
 
@@ -15,21 +19,21 @@ const LoginForm = ({ dictionary }: propsType) => {
   const { control, handleSubmit, reset } = useForm<FormInput>({
     defaultValues: {},
   });
-  //const [login, { isLoading }] = useLoginMutation();
-  //   const dispatch = useDispatch();
-  //   const router = useRouter();
+  const [login, { isLoading }] = useLoginMutation();
+
+  const router = useRouter();
 
   const onSubmit = async (data: FormInput) => {
-    // try {
-    //   const userData = await login(data).unwrap();
-    //   dispatch(setToken(userData.token));
-    //   sessionStorage.setItem("token", userData.token);
-    //   router.push("/"); // Redirect to the dashboard
-    // } catch (err) {
-    //   console.error("Failed to login: ", err);
-    // }
-    console.log(data);
+    const userData = await toast.promise(login(data).unwrap(), {
+      pending: "pending",
+      success: "resolved ",
+      error: "rejected ",
+    });
+    sessionStorage.setItem("user", JSON.stringify(userData));
+    router.push("/accounts");
   };
+
+  //navigate("/dashboard");
 
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen bg-white lg:py-0">
@@ -45,17 +49,17 @@ const LoginForm = ({ dictionary }: propsType) => {
             action="#"
           >
             <Controller
-              name="email"
+              name="username"
               control={control}
               render={({ field }) => (
                 <Input
                   inputProps={{
                     ...field,
-                    name: "email",
-                    type: "email",
+                    name: "username",
+                    type: "username",
                     placeholder: "name@company.com",
                   }}
-                  label={dictionary["email"]}
+                  label={dictionary["username"]}
                 />
               )}
             />

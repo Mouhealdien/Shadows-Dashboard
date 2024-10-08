@@ -7,10 +7,12 @@ import AccountsForm from "../accounts/AccountsForm";
 import { MdOutlineModeEdit } from "react-icons/md";
 import IconButton from "./IconButton";
 import { MdDelete } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../redux/store";
 type propsType = {
   headers?: string[];
   dictionary: Awaited<ReturnType<typeof getDictionary>>;
-  EditForm: React.ComponentType<{ dictionary: any; data: any }>;
+  EditForm?: React.ComponentType<{ dictionary: any; data: any }>;
   data?: any;
   editLink?: string;
   isAdmin?: boolean;
@@ -34,6 +36,9 @@ const DashboradTable = ({
       error: "Delete rejected 🤯",
     });
   };
+
+  // const token = useSelector((state: RootState) => state.auth.token);
+  // console.log(token);
 
   return (
     // <div className="relative max-w-[1000px] m-auto p-5 overflow-x-auto shadow-md sm:rounded-lg">
@@ -75,7 +80,7 @@ const DashboradTable = ({
               })}
 
               <td className="px-6  py-4 flex flex-row justify-center gap-2">
-                {!isAdmin && (
+                {EditForm && (
                   <ModalButton
                     modalContent={
                       <EditForm data={ob} dictionary={dictionary} />

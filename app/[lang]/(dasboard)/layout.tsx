@@ -4,6 +4,8 @@ import "../global.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getDictionary } from "../../../get-dictionary";
+import Providers from "../components/global/Providers";
+import AuthLayout from "../components/Login/AuthLayout";
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
@@ -17,14 +19,10 @@ export default async function Root({
 }) {
   const dictionary = await getDictionary(params.lang);
   return (
-    <html lang={params.lang} dir={params.lang == "ar" ? "rtl" : "ltr"}>
-      <body>
-        {/* <LocaleSwitcher /> */}
-        <SideBar dictionary={dictionary} />
-        <ToastContainer />
-        <div className="p-4   sm:mr-64">{children}</div>
-      </body>
-    </html>
+    <AuthLayout>
+      <SideBar dictionary={dictionary} />
+      <div className="p-4    sm:mr-64">{children}</div>
+    </AuthLayout>
   );
 }
 

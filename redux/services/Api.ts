@@ -16,7 +16,15 @@ export const Api = createApi({
     //   return headers;
     // },
   }),
-  endpoints: (builder) => ({}),
+  endpoints: (builder) => ({
+    login: builder.mutation({
+      query: (data) => ({
+        url: "Employee/Login",
+        method: "POST",
+        body: data,
+      }),
+    }),
+  }),
 });
 
-export const {} = Api;
+export const { useLoginMutation } = Api;
