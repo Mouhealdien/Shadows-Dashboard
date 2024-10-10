@@ -3,9 +3,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { RootState } from "../../../../redux/store";
-
 import Loader from "../global/Loader";
-
 type propsType = {
   children: ReactNode;
 };

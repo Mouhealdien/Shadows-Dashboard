@@ -14,7 +14,7 @@ const Modal = ({ isOpen, onClose, children, ModalTitle }: propsType) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-40">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl mx-3">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl mx-3 relative">
         <div className="flex items-center justify-between mb-10">
           <h2 className="text-3xl font-bold"> {ModalTitle}</h2>
           <button

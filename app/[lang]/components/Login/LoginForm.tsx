@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import Input from "../global/Input";
 import { type getDictionary } from "../../../../get-dictionary";
@@ -7,6 +7,9 @@ import { useLoginMutation } from "../../../../redux/services/Api";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import Loader from "../global/Loader";
+import { usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 type FormInput = {
   username: string;
   password: string;
@@ -16,6 +19,10 @@ type propsType = {
   dictionary: Awaited<ReturnType<typeof getDictionary>>;
 };
 const LoginForm = ({ dictionary }: propsType) => {
+  const [loading, setLoading] = useState(false);
+  const pathName = usePathname();
+  const { lang } = useParams();
+  console.log(pathName);
   const { control, handleSubmit, reset } = useForm<FormInput>({
     defaultValues: {},
   });
@@ -30,10 +37,11 @@ const LoginForm = ({ dictionary }: propsType) => {
       error: "rejected ",
     });
     sessionStorage.setItem("user", JSON.stringify(userData));
-    router.push("/accounts");
+    setLoading(true);
+    router.push("/employees");
   };
 
-  //navigate("/dashboard");
+  if (loading && pathName != `/${lang}/employees`) return <Loader />;
 
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen bg-white lg:py-0">

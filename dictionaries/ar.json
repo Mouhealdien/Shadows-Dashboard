@@ -15,5 +15,14 @@
   "employee": "موظف",
   "thisIsRequired": "هذا الحقل مطلوب",
   "AddAccount": "اضافة حساب",
-  "editAccount": "تعديل الحساب"
+  "AddEmployee": "اضافة موظف",
+  "editAccount": "تعديل الحساب",
+  "username": "اسم المستخدم",
+  "firstName": "الاسم الاول",
+  "lastName": "الكنية",
+  "phoneNumber": "رقم الهاتف",
+  "birthDate": "تاريخ الميلاد",
+  "success": "نجحت العملية",
+  "faild": "فشلت العملية",
+  "pending": "....انتظار"
 }

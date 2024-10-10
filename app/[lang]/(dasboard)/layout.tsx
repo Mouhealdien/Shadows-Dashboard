@@ -19,10 +19,12 @@ export default async function Root({
 }) {
   const dictionary = await getDictionary(params.lang);
   return (
-    <AuthLayout>
+    // <AuthLayout>
+    <>
       <SideBar dictionary={dictionary} />
       <div className="p-4    sm:mr-64">{children}</div>
-    </AuthLayout>
+    </>
+    // </AuthLayout>
   );
 }
 
