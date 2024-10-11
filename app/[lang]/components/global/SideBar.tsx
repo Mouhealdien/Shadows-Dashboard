@@ -7,7 +7,7 @@ import { GiTeacher } from "react-icons/gi";
 import { BsPersonVcard } from "react-icons/bs";
 import { IoNewspaperOutline } from "react-icons/io5";
 import { MdOutlineManageAccounts } from "react-icons/md";
-
+import { GoGear } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
 import { getDictionary } from "../../../../get-dictionary";
 import { usePathname } from "next/navigation";
@@ -41,10 +41,15 @@ const SideBar = ({ dictionary }: propsType) => {
       icon: <IoNewspaperOutline />,
       href: "/courses",
     },
+    // {
+    //   title: "accounts",
+    //   icon: <MdOutlineManageAccounts />,
+    //   href: "/accounts",
+    // },
     {
-      title: "accounts",
-      icon: <MdOutlineManageAccounts />,
-      href: "/accounts",
+      title: "settings",
+      icon: <GoGear />,
+      href: "/settings",
     },
   ];
 
@@ -59,7 +64,7 @@ const SideBar = ({ dictionary }: propsType) => {
         data-drawer-toggle="default-sidebar"
         aria-controls="default-sidebar"
         type="button"
-        className="inline-flex items-center p-2 mt-2 ms-3 transition-all duration-500 text-sm text-primary rounded-lg sm:hidden hover:bg-primary hover:text-white   "
+        className="inline-flex items-center p-2 mt-2 ms-3 transition-all duration-500 text-sm text-primary rounded-lg md:hidden hover:bg-primary hover:text-white   "
       >
         <span className="sr-only">Toggle sidebar</span>
         <svg
@@ -81,12 +86,12 @@ const SideBar = ({ dictionary }: propsType) => {
         id="default-sidebar"
         className={`fixed shadow-lg  top-0 right-0 z-40  h-screen transition-transform transform ${
           isSidebarOpen ? "" : "translate-x-full"
-        } sm:translate-x-0`}
+        } md:translate-x-0`}
         aria-label="Sidebar"
       >
         <button
           onClick={toggleSidebar}
-          className={`absolute text-fourth top-2 left-2 text-xl hover:text-primary transition duration-300  sm:hidden`}
+          className={`absolute text-fourth top-2 left-2 text-xl hover:text-primary transition duration-300  md:hidden`}
         >
           <IoClose />
         </button>

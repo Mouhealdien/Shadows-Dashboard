@@ -20,7 +20,7 @@ export const Api = createApi({
     },
   }),
 
-  tagTypes: ["Employees"],
+  tagTypes: ["Employees", "Categories"],
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (data) => ({
@@ -67,6 +67,50 @@ export const Api = createApi({
       }),
       invalidatesTags: ["Employees"],
     }),
+
+    getCategories: builder.query({
+      query: () => `Category/GetAll`,
+      providesTags: ["Categories"],
+    }),
+
+    getParentCategories: builder.query({
+      query: () => `Category/GetParentCategoryIds`,
+      providesTags: ["Categories"],
+    }),
+
+    getSubCategories: builder.query({
+      query: (id) => ({
+        url: `Category/GetSubCategories?ParentId=${id}`,
+      }),
+      providesTags: ["Categories"],
+    }),
+
+    createCategory: builder.mutation({
+      query: (data) => ({
+        url: "Category/Create",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Categories"],
+    }),
+
+    deleteCategory: builder.mutation({
+      query: (id) => ({
+        url: `Category/Delete`,
+        method: "Delete",
+        body: id,
+      }),
+      invalidatesTags: ["Categories"],
+    }),
+
+    updateCategory: builder.mutation({
+      query: (data) => ({
+        url: `Category/Update`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["Categories"],
+    }),
   }),
 });
 
@@ -77,4 +121,10 @@ export const {
   useGetEmployeesQuery,
   useUpdateEmployeeMutation,
   useDeleteEmployeeMutation,
+  useGetCategoriesQuery,
+  useGetParentCategoriesQuery,
+  useGetSubCategoriesQuery,
+  useCreateCategoryMutation,
+  useDeleteCategoryMutation,
+  useUpdateCategoryMutation,
 } = Api;

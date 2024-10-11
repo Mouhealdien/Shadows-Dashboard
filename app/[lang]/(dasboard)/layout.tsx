@@ -22,7 +22,7 @@ export default async function Root({
     // <AuthLayout>
     <>
       <SideBar dictionary={dictionary} />
-      <div className="p-4    sm:mr-64">{children}</div>
+      <div className="p-4    md:mr-64">{children}</div>
     </>
     // </AuthLayout>
   );

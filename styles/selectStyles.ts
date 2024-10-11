@@ -14,7 +14,7 @@ export const selectStyle = {
     fontSize: "14px",
     paddingTop: "4px",
     borderRadius: "6px",
-    border: "none",
+    // border: "none",
     paddingBottom: "4px",
   }),
 };

@@ -13,6 +13,7 @@ import {
 import { toast } from "react-toastify";
 import { EmployeeWithPassword } from "../../../../types/Employess";
 import Loader from "../global/Loader";
+import { convertToSelectType } from "../../../../utils/utils";
 
 type FormInput = {
   username: string;
@@ -37,10 +38,7 @@ const EmployessForm = ({ dictionary, data }: propsType) => {
   const [selectRoles, setSelectRoles] = useState([]);
 
   useEffect(() => {
-    const Roles = roles?.map((e: { id: string; name: string }) => ({
-      value: e.id,
-      label: e.name,
-    }));
+    const Roles = convertToSelectType(roles);
     setSelectRoles(Roles || []);
   }, [roles]);
 
@@ -297,7 +295,7 @@ const EmployessForm = ({ dictionary, data }: propsType) => {
           type="submit"
           className=" w-[40%] sm:w-[20%]  bg-primary text-secondary bg-primary-600 hover:bg-primary-700  font-medium rounded-lg text-sm px-5 py-2.5 text-center   "
         >
-          {dictionary["add"]}
+          {data ? dictionary["edit"] : dictionary["add"]}
         </button>
       </div>
     </form>
