@@ -20,7 +20,7 @@ export const Api = createApi({
     },
   }),
 
-  tagTypes: ["Employees", "Categories"],
+  tagTypes: ["Employees", "Categories", "Students"],
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (data) => ({
@@ -34,7 +34,8 @@ export const Api = createApi({
       query: () => `Role/GetAll`,
     }),
     getEmployees: builder.query({
-      query: () => `Employee/GetAll`,
+      query: (params) =>
+        `Employee/GetAll?Query=${params.Query}&PageSize=${params.pageSize}&PageNumber=${params.pageNumber}`,
       providesTags: ["Employees"],
     }),
 
@@ -111,6 +112,46 @@ export const Api = createApi({
       }),
       invalidatesTags: ["Categories"],
     }),
+
+    getStudents: builder.query({
+      query: (params) =>
+        `Student/GetAll?Query=${params.Query}&${
+          params.CategoryIds ? "CategoryIds=" + params.CategoryIds + "&" : ""
+        }PageSize=${params.pageSize}&PageNumber=${params.pageNumber}`,
+      providesTags: ["Students"],
+    }),
+
+    getStudentsDetails: builder.query({
+      query: (id) => `Student/GetDetails?Id=${id}`,
+      providesTags: ["Students"],
+    }),
+
+    createStudent: builder.mutation({
+      query: (data) => ({
+        url: "Student/Create",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Students"],
+    }),
+
+    deleteStudent: builder.mutation({
+      query: (id) => ({
+        url: `Student/Delete`,
+        method: "Delete",
+        body: id,
+      }),
+      invalidatesTags: ["Students"],
+    }),
+
+    updateStudent: builder.mutation({
+      query: (data) => ({
+        url: `Student/Update`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["Students"],
+    }),
   }),
 });
 
@@ -127,4 +168,9 @@ export const {
   useCreateCategoryMutation,
   useDeleteCategoryMutation,
   useUpdateCategoryMutation,
+  useGetStudentsQuery,
+  useGetStudentsDetailsQuery,
+  useCreateStudentMutation,
+  useDeleteStudentMutation,
+  useUpdateStudentMutation,
 } = Api;

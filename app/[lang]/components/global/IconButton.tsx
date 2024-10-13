@@ -3,13 +3,13 @@ import { IconType } from "react-icons";
 
 type propsType = {
   icon: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   customeStyle?: string;
 };
 
 const IconButton = ({ icon, onClick, customeStyle }: propsType) => {
   const handelButton = () => {
-    onClick();
+    onClick ? onClick() : "";
   };
   return (
     <button

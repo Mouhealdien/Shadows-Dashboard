@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getDictionary } from "../../../../get-dictionary";
 import { Locale } from "../../../../i18n-config";
+import Students from "../../components/students/Students";
 
 export default async function IndexPage({
   params: { lang },
@@ -9,5 +10,5 @@ export default async function IndexPage({
 }) {
   const dictionary = await getDictionary(lang);
 
-  return <div>مرحبا من الصفحة الرئيسية</div>;
+  return <Students dictionary={dictionary} />;
 }
