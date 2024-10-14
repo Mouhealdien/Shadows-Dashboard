@@ -46,13 +46,16 @@ const EmployeesWorkTabel = ({
             employeeWork[0]?.days.map((d: any) => {
               return (
                 <tr className="odd:bg-white  text-center odd:text-black even:text-black even:bg-[#c6222933] border-b ">
-                  <td> {d.day}</td>
+                  <td>
+                    {" "}
+                    {d.day} {d.month}
+                  </td>
                   <td className="flex flex-row gap-5 items-center justify-center">
                     {d.workTimes.map((w: any) => {
                       return (
                         <div className="flex flex-col gap-3">
-                          <div>{getTimeOnly(w.start)}</div>
-                          <div>{getTimeOnly(w.end)}</div>
+                          <div>{w.start}</div>
+                          <div>{w.end}</div>
                         </div>
                       );
                     })}
