@@ -20,7 +20,7 @@ export const Api = createApi({
     },
   }),
 
-  tagTypes: ["Employees", "Categories", "Students"],
+  tagTypes: ["Employees", "Categories", "Students", "EmployeessWork"],
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (data) => ({
@@ -35,7 +35,9 @@ export const Api = createApi({
     }),
     getEmployees: builder.query({
       query: (params) =>
-        `Employee/GetAll?Query=${params.Query}&PageSize=${params.pageSize}&PageNumber=${params.pageNumber}`,
+        params
+          ? `Employee/GetAll?Query=${params.Query}&PageSize=${params.pageSize}&PageNumber=${params.pageNumber}`
+          : `Employee/GetAll`,
       providesTags: ["Employees"],
     }),
 
@@ -152,6 +154,21 @@ export const Api = createApi({
       }),
       invalidatesTags: ["Students"],
     }),
+
+    getWorkTime: builder.query({
+      query: (params) =>
+        `Employee/GetWorkTime?EmployeeId=${params.EmployeeId}&From=${params.From}&To=${params.To}`,
+      providesTags: ["EmployeessWork"],
+    }),
+
+    setStartStopEmployeeWork: builder.mutation({
+      query: (id) => ({
+        url: `Employee/StartStopEmployeeWork`,
+        method: "PUT",
+        body: id,
+      }),
+      invalidatesTags: ["EmployeessWork"],
+    }),
   }),
 });
 
@@ -173,4 +190,6 @@ export const {
   useCreateStudentMutation,
   useDeleteStudentMutation,
   useUpdateStudentMutation,
+  useGetWorkTimeQuery,
+  useSetStartStopEmployeeWorkMutation,
 } = Api;

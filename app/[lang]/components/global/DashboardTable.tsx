@@ -8,6 +8,7 @@ import { MdInfo, MdOutlineModeEdit } from "react-icons/md";
 import IconButton from "./IconButton";
 import { MdDelete } from "react-icons/md";
 import Link from "next/link";
+import Toggle from "./Toggle";
 
 type propsType = {
   headers?: string[];
@@ -18,6 +19,7 @@ type propsType = {
   editLink?: string;
   student?: boolean;
   deleteMethod?: any;
+  registerMethod?: any;
 };
 
 const DashboradTable = ({
@@ -27,10 +29,19 @@ const DashboradTable = ({
   EditForm,
   editFormProps,
   deleteMethod,
+  registerMethod,
   student,
 }: propsType) => {
   const handelClick = async (id: any) => {
     await toast.promise(deleteMethod({ id: id }), {
+      pending: dictionary["pending"],
+      success: dictionary["success"],
+      error: dictionary["faild"],
+    });
+  };
+
+  const handelCheck = async (id: any) => {
+    await toast.promise(registerMethod({ employeeId: id }), {
       pending: dictionary["pending"],
       success: dictionary["success"],
       error: dictionary["faild"],
@@ -62,7 +73,7 @@ const DashboradTable = ({
                 className="odd:bg-white  text-center odd:text-black even:text-black even:bg-[#c6222933] border-b "
               >
                 {Object.keys(ob).map((prop, propIndex) => {
-                  if (prop != "id")
+                  if (prop != "id" && prop != "isOnWork")
                     return (
                       <td key={propIndex} className="px-6 py-4">
                         {` ${ob[prop]}`}
@@ -70,7 +81,7 @@ const DashboradTable = ({
                     );
                 })}
 
-                <td className="px-6  py-4 flex flex-row justify-center gap-2">
+                <td className="px-6  py-4 flex flex-row justify-center items-center gap-2">
                   {EditForm && (
                     <ModalButton
                       modalContent={
@@ -100,6 +111,14 @@ const DashboradTable = ({
                         customeStyle="bg-[#e3a702] text-white hover:bg-white hover:text-[#e3a702]"
                       />
                     </Link>
+                  )}
+                  {registerMethod && (
+                    <Toggle
+                      onClick={() => {
+                        handelCheck(ob?.id);
+                      }}
+                      state={ob?.isOnWork}
+                    />
                   )}
                 </td>
               </tr>

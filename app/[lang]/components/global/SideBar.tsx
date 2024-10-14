@@ -7,6 +7,7 @@ import { GiTeacher } from "react-icons/gi";
 import { BsPersonVcard } from "react-icons/bs";
 import { IoNewspaperOutline } from "react-icons/io5";
 import { MdOutlineManageAccounts } from "react-icons/md";
+import { GrLogin } from "react-icons/gr";
 import { GoGear } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
 import { getDictionary } from "../../../../get-dictionary";
@@ -46,6 +47,11 @@ const SideBar = ({ dictionary }: propsType) => {
     //   icon: <MdOutlineManageAccounts />,
     //   href: "/accounts",
     // },
+    {
+      title: "registration",
+      icon: <GrLogin />,
+      href: "/registration",
+    },
     {
       title: "settings",
       icon: <GoGear />,

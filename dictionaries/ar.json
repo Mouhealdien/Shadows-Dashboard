@@ -41,5 +41,12 @@
   "rowsNumber": "عدد الاسطر",
   "search": "ابحث",
   "createdAt": "تاريخ الإضافة",
-  "totalBalance": "الرصيد"
+  "totalBalance": "الرصيد",
+  "registration": "تسجيل الدوام",
+  "day": "اليوم",
+  "workTime": "وقت العمل",
+  "employeeRegistration": "سجل دوام الموظف",
+  "from": "من",
+  "to": "الى",
+  "chooseEmployee": "اختر الموظف"
 }
